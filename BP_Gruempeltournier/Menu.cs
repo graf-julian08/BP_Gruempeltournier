@@ -6,11 +6,11 @@
         {
             Console.WriteLine("|            MENU            |");
             Console.WriteLine("| -------------------------- |");
-            Console.WriteLine("|  (1)  Spieler erfassen     |");
+            Console.WriteLine("| (1) Spieler erfassen       |");
             Console.WriteLine("|                            |");
-            Console.WriteLine("|  (2)    Team erfassen      |");
+            Console.WriteLine("| (2) Team erfassen          |");
             Console.WriteLine("|                            |");
-            Console.WriteLine("|  (3) Spielplan generieren  |");
+            Console.WriteLine("| (3) Spielplan generieren   |");
             Console.WriteLine("+----------------------------+");
 
             bool correctNumber = false;

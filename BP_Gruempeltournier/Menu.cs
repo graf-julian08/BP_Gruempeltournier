@@ -1,15 +1,4 @@
-﻿using System.Globalization;
-using Microsoft.Data.SqlClient;
-
-private const string ConnStr =
-    "Server=localhost,1433;" +
-    "Database=Gruempeltournier;" +   // Name deiner DB aus dem Object Explorer
-    "User Id=sa;" +
-    "Password=Gruempeli@2025;" +
-    "Encrypt=True;TrustServerCertificate=True;";
-
-
-namespace BP_Gruempeltournier
+﻿namespace BP_Gruempeltournier
 {
     internal class Menu
     {

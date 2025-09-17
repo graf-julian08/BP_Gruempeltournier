@@ -41,7 +41,16 @@
                     }
                     else if (menuInput == "2")
                     {
-                        Console.WriteLine("2");
+                        Console.WriteLine("");
+                        Console.WriteLine("         Team erfassen        ");
+                        Console.WriteLine("------------------------------");
+                        Console.Write("Teamname: ");
+                        string teamName = Console.ReadLine();
+                        Console.WriteLine("Spieler (kommagetrennt): ");
+                        string teamSpieler = Console.ReadLine();
+
+                        Console.WriteLine(teamName + " " + teamSpieler);
+
                     }
                     else
                     {

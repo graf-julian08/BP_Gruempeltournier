@@ -1,4 +1,7 @@
-﻿namespace BP_Gruempeltournier
+﻿using System.IO.Pipes;
+using Microsoft.Data.SqlClient;
+
+namespace BP_Gruempeltournier
 {
     internal class Program
     {

@@ -35,6 +35,25 @@ namespace BP_Gruempeltournier
                 {
                     break;
                 }
+                Console.Write("Spieldauer in Minuten: ");
+                if (!int.TryParse(Console.ReadLine(), out var pausenDauer))
+                {
+                    Console.WriteLine("Bitte einen Wert zwischen 1 und 15 eingeben!");
+                    continue;
+                }
+
+                if (pausenDauer > 15)
+                {
+                    Console.WriteLine("Die maximale Pausenzeit beträgt 15 Minuten!");
+                }
+                else if (spieldauer < 1)
+                {
+                    Console.WriteLine("Die minimale Pausenzeit beträgt 1 Minute!");
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ namespace BP_Gruempeltournier
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(@"C:\Users\graf_\source\repos\M320_OoP\BP_Gruempeltournier\appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile(@"C:\Schule\BP\Gruempelturnier\appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
 
             var connectionString = config.GetConnectionString("GruempeliDb");

@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace BP_Gruempeltournier
+﻿namespace BP_Gruempeltournier
 {
     internal class Menu
     {

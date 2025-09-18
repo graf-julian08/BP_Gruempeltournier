@@ -79,7 +79,6 @@
             
             Console.WriteLine("Zwei Teams werden gezogen...");
             Thread.Sleep(2000);
-            Console.WriteLine($"Spiel {spielNummer}: ... spielt gegen .... Spielstart: {spielBeginn}, Spieldauer: {Spieldauer}, Pausendauer: {pausenDauer}.");
         }
     }
 }

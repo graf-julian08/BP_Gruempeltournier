@@ -40,9 +40,28 @@
                 {
                     Console.WriteLine("Die maximale Pausenzeit beträgt 15 Minuten!");
                 }
-                else if (spieldauer < 1)
+                else if (pausenDauer < 1)
                 {
                     Console.WriteLine("Die minimale Pausenzeit beträgt 1 Minute!");
+                }
+                else
+                {
+                    break;
+                }
+                Console.Write("Spielbeginn (z.B. 8.00): ");
+                if (!Double.TryParse(Console.ReadLine(), out var spielBeginn))
+                {
+                    Console.WriteLine("Bitte einen Wert zwischen 8.00 und 18.00 eingeben!");
+                    continue;
+                }
+
+                if (spielBeginn > 18.00)
+                {
+                    Console.WriteLine("Das letzte Spiel darf spätestens um 18:00 beginnen.");
+                }
+                else if (spielBeginn < 8.00)
+                {
+                    Console.WriteLine("Das Tournier beginnt erst um 8:00 Uhr");
                 }
                 else
                 {

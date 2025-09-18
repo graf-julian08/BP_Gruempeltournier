@@ -7,6 +7,10 @@ namespace BP_Gruempeltournier
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Black;
+
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile(@"C:\Users\graf_\source\repos\M320_OoP\BP_Gruempeltournier\appsettings.json", optional: false, reloadOnChange: true)
@@ -14,8 +18,6 @@ namespace BP_Gruempeltournier
 
             var connectionString = config.GetConnectionString("GruempeliDb");
             Db.ConnectionString = connectionString;
-
-            //Console.WriteLine(connectionString);
 
             Menu.CreateMenu();
         }

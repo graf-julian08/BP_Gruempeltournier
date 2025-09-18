@@ -1,29 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+using BP_Gruempeltournier.Models;
 
 namespace BP_Gruempeltournier.Data
 {
-    using System.Data;
-    using Microsoft.Data.SqlClient;
-    using BP_Gruempeltournier.Models;
-    using System.Collections.Generic;
-
     public class TeamRepository
     {
+        public bool ExistsTeamname(string teamname)
+        {
+            if (string.IsNullOrWhiteSpace(teamname))
+                return false;
+
+            using var con = Db.GetConnection();
+            using var cmd = con.CreateCommand();
+            cmd.CommandText = @"SELECT 1 FROM dbo.Team WHERE LOWER(Teamname) = LOWER(@Teamname);";
+            cmd.Parameters.Add("@Teamname", SqlDbType.NVarChar, 100).Value = teamname.Trim();
+            con.Open();
+            var result = cmd.ExecuteScalar();
+            return result != null;
+        }
+
         public int InsertTeam(string teamname)
         {
+            if (string.IsNullOrWhiteSpace(teamname))
+                throw new ArgumentException("Teamname darf nicht leer sein.", nameof(teamname));
+
+            teamname = teamname.Trim();
+
             using var con = Db.GetConnection();
+            con.Open();
+
+            using (var check = con.CreateCommand())
+            {
+                check.CommandText = @"SELECT 1 FROM dbo.Team WHERE LOWER(Teamname) = LOWER(@Teamname);";
+                check.Parameters.Add("@Teamname", SqlDbType.NVarChar, 100).Value = teamname;
+                var exists = check.ExecuteScalar();
+                if (exists != null)
+                    throw new InvalidOperationException("Teamname bereits vorhanden. Bitte einen neuen eingeben.");
+            }
+
             using var cmd = con.CreateCommand();
             cmd.CommandText = @"
 INSERT INTO dbo.Team (Teamname)
 OUTPUT INSERTED.TeamID
 VALUES (@Teamname);";
             cmd.Parameters.Add("@Teamname", SqlDbType.NVarChar, 100).Value = teamname;
-            con.Open();
-            return (int)cmd.ExecuteScalar()!;
+
+            try
+            {
+                return (int)cmd.ExecuteScalar()!;
+            }
+            catch (SqlException ex) when (ex.Number is 2627 or 2601)
+            {
+                throw new InvalidOperationException("Teamname bereits vorhanden. Bitte einen neuen eingeben.", ex);
+            }
         }
 
         public void AddSpielerZuTeam(int teamId, int spielerId)
@@ -84,4 +117,3 @@ ORDER BY t.TeamID, s.SpielerID;";
         }
     }
 }
-

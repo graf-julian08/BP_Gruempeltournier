@@ -1,10 +1,7 @@
 ﻿using System.Globalization;
-<<<<<<< HEAD
 using System.Data;
 using BP_Gruempeltournier.Data;
 using BP_Gruempeltournier.Models;
-=======
->>>>>>> 8250d94de2ad969997d17683bda19f5a51cf4794
 
 namespace BP_Gruempeltournier
 {

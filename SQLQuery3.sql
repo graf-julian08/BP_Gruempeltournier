@@ -1,1 +1,0 @@
-﻿INSERT INTO Team(id, TeamName, SpielerID) VALUES ('Max', 'Mustermann', '2000-01-01', 'Zürich');

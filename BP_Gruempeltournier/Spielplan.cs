@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Collections.Generic;
 using BP_Gruempeltournier.Data;
+using BP_Gruempeltournier.Models;
 
 namespace BP_Gruempeltournier
 {
@@ -14,10 +15,41 @@ namespace BP_Gruempeltournier
             return TimeSpan.FromMinutes(totalMinutesRounded);
         }
 
+
+        private static List<Grupierung> GeneriereGruppirungen()
+        {
+            var gruppierungen = new List<Grupierung>();
+
+            var teams = new TeamRepository().GetAllWithSpieler();
+
+            var paarungen = new List<Game>();
+
+            for (int i = 0; i < teams.Count; i++)
+            {
+                for (int j = i+1; j < teams.Count; j++)
+                {
+                    paarungen.Add(new Game
+                    {
+                        TeamA = teams[i],
+                        TeamB = teams[j],
+                    });
+                }
+            }
+
+
+
+            return gruppierungen;
+        }
+
+        private static void SpielplanAusgeben(List<Grupierung> gruppierungen)
+        {
+
+        }
+
         internal static void Generieren()
         {
             int spielNummer = 1;
-            Console.WriteLine("");
+            Console.WriteLine();
             Console.WriteLine("      Spielplan erstellen     ");
             Console.WriteLine("------------------------------");
 
@@ -27,9 +59,7 @@ namespace BP_Gruempeltournier
                 Console.Write("Spieldauer in Minuten: ");
                 if (!int.TryParse(Console.ReadLine(), out spieldauer))
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Bitte einen Wert zwischen 5 und 90 eingeben.");
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    ConsoleHelper.WriteLineColored("Bitte einen Wert zwischen 5 und 90 eingeben.", ConsoleColor.Red);
                     continue;
                 }
                 if (spieldauer > 90)
@@ -106,11 +136,16 @@ namespace BP_Gruempeltournier
                 break;
             }
 
+            var gruppirungen = GeneriereGruppirungen();
+            SpielplanAusgeben(gruppirungen);
+
             var teamRepo = new TeamRepository();
             var planRepo = new SpielplanRepository();
             var teams = teamRepo.GetAllWithSpieler();
 
             var teamNameById = teams.ToDictionary(t => t.TeamID, t => t.Teamname);
+
+
 
             var paarungen = new List<(int t1, int t2)>();
             for (int i = 0; i < teams.Count; i++)
@@ -204,4 +239,22 @@ namespace BP_Gruempeltournier
             }
         }
     }
+
+
+    //internal class Grupierung
+    //{
+
+    //    public TimeOnly StartTime { get; init; }
+
+
+    //    public List<Game> Games { get; init; }
+    //}
+
+    //internal class Game
+    //{
+    //    public Team TeamA { get; init; }
+
+
+    //    public Team TeamB { get; init; }
+    //}
 }

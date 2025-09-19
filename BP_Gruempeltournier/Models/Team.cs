@@ -1,6 +1,4 @@
-﻿
-
-namespace BP_Gruempeltournier.Models
+﻿namespace BP_Gruempeltournier.Models
 {
     public class Team
     {

@@ -1,10 +1,10 @@
 ﻿using BP_Gruempeltournier.Data;
-<<<<<<< .merge_file_3Hzkhk
+<<<<<<< HEAD
 using BP_Gruempeltournier.Models;
 using System.Globalization;
 
 =======
->>>>>>> .merge_file_SmN2VF
+>>>>>>> 8fa445c0e893725e7d55075dbb678b384b6f7dce
 namespace BP_Gruempeltournier
 {
 
@@ -66,7 +66,7 @@ namespace BP_Gruempeltournier
                         break;
                 }
 
-<<<<<<< .merge_file_3Hzkhk
+<<<<<<< HEAD
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
@@ -76,7 +76,7 @@ namespace BP_Gruempeltournier
                     
                 }
 =======
->>>>>>> .merge_file_SmN2VF
+>>>>>>> 8fa445c0e893725e7d55075dbb678b384b6f7dce
             }
         }
     }

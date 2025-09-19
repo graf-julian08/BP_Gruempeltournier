@@ -1,14 +1,6 @@
 ﻿using BP_Gruempeltournier.Data;
-<<<<<<< .merge_file_3Hzkhk
-using BP_Gruempeltournier.Models;
-using System.Globalization;
-
-=======
->>>>>>> .merge_file_SmN2VF
 namespace BP_Gruempeltournier
 {
-
-    
     internal class Menu
     {
         internal static void CreateMenu()
@@ -16,7 +8,6 @@ namespace BP_Gruempeltournier
             bool gameState = true;
             var spielerRepo = new SpielerRepository();
             var teamRepo = new TeamRepository();
-            
 
             while (gameState)
             {
@@ -66,17 +57,6 @@ namespace BP_Gruempeltournier
                         break;
                 }
 
-<<<<<<< .merge_file_3Hzkhk
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Spiel beendet!");
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    gameState = false;
-                    
-                }
-=======
->>>>>>> .merge_file_SmN2VF
             }
         }
     }

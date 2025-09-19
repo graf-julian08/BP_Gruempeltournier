@@ -1,9 +1,5 @@
 ﻿using BP_Gruempeltournier.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BP_Gruempeltournier
 {
@@ -22,18 +18,24 @@ namespace BP_Gruempeltournier
 
             if (teamCount < 2)
             {
-                ConsoleHelper.WriteLineColored("+----------------------------------+\n| MINDESTENS ZWEI TEAMS ERSTELLEN! |\n+----------------------------------+", ConsoleColor.Red);
+                ConsoleHelper.WriteLineColored(
+                    "+----------------------------------+\n" +
+                    "| MINDESTENS ZWEI TEAMS ERSTELLEN! |\n" +
+                    "+----------------------------------+",
+                    ConsoleColor.Red
+                );
+
+                // zurück zum Menü (flowControl = true, value = false z.B.)
+                return (flowControl: true, value: false);
             }
             else
             {
                 Spielplan.Generieren();
                 gameState = false;
-                return (flowControl: true, value: default);
+
+                // alles okay, weiter im Flow
+                return (flowControl: true, value: true);
             }
-
-            // todo correct this
-            return (flowControl: true, value: default);
-
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using BP_Gruempeltournier.Data;
-<<<<<<< HEAD
 using BP_Gruempeltournier.Models;
 using System.Globalization;
 
-=======
->>>>>>> cde328e6821d9f2c6cb0380312149d3cc2a5a5f5
 namespace BP_Gruempeltournier
 {
+
+    
     internal class Menu
     {
         internal static void CreateMenu()
@@ -29,7 +28,6 @@ namespace BP_Gruempeltournier
                 Console.WriteLine("| (4) Tournier beenden       |");
                 Console.WriteLine("+----------------------------+");
 
-<<<<<<< HEAD
                 string? menuInput = null;
                 while (menuInput is null)
                 {
@@ -260,12 +258,6 @@ namespace BP_Gruempeltournier
                     gameState = false;
                     
                 }
-=======
-                bool validInput = false;
-                string menuInput = "";
-
-                MenuPruefung.MenuPunkte(ref gameState, spielerRepo, teamRepo, ref validInput, ref menuInput);
->>>>>>> cde328e6821d9f2c6cb0380312149d3cc2a5a5f5
             }
         }
     }

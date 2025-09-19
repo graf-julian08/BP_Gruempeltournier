@@ -16,35 +16,35 @@ namespace BP_Gruempeltournier
         }
 
 
-        private static List<Grupierung> GeneriereGruppirungen()
-        {
-            var gruppierungen = new List<Grupierung>();
+        //private static List<Grupierung> GeneriereGruppirungen()
+        //{
+        //    var gruppierungen = new List<Grupierung>();
 
-            var teams = new TeamRepository().GetAllWithSpieler();
+        //    var teams = new TeamRepository().GetAllWithSpieler();
 
-            var paarungen = new List<Game>();
+        //    var paarungen = new List<Game>();
 
-            for (int i = 0; i < teams.Count; i++)
-            {
-                for (int j = i+1; j < teams.Count; j++)
-                {
-                    paarungen.Add(new Game
-                    {
-                        TeamA = teams[i],
-                        TeamB = teams[j],
-                    });
-                }
-            }
+        //    for (int i = 0; i < teams.Count; i++)
+        //    {
+        //        for (int j = i+1; j < teams.Count; j++)
+        //        {
+        //            paarungen.Add(new Game
+        //            {
+        //                TeamA = teams[i],
+        //                TeamB = teams[j],
+        //            });
+        //        }
+        //    }
 
 
 
-            return gruppierungen;
-        }
+        //    return gruppierungen;
+        //}
 
-        private static void SpielplanAusgeben(List<Grupierung> gruppierungen)
-        {
+        //private static void SpielplanAusgeben(List<Grupierung> gruppierungen)
+        //{
 
-        }
+        //}
 
         internal static void Generieren()
         {
@@ -136,8 +136,8 @@ namespace BP_Gruempeltournier
                 break;
             }
 
-            var gruppirungen = GeneriereGruppirungen();
-            SpielplanAusgeben(gruppirungen);
+            //var gruppirungen = GeneriereGruppirungen();
+            //SpielplanAusgeben(gruppirungen);
 
             var teamRepo = new TeamRepository();
             var planRepo = new SpielplanRepository();

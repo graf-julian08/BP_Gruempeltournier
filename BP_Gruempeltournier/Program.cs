@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using BP_Gruempeltournier.Data;
+using BP_Gruempeltournier;
 
 namespace BP_Gruempeltournier
 {
@@ -19,7 +20,11 @@ namespace BP_Gruempeltournier
             var connectionString = config.GetConnectionString("GruempeliDb");
             Db.ConnectionString = connectionString;
 
-            Menu.CreateMenu();
+            bool gameState = true;
+            var spielerRepo = new SpielerRepository();
+            var teamRepo = new TeamRepository();
+
+            Menu.CreateMenu(ref gameState, spielerRepo, teamRepo);
         }
     }
 }

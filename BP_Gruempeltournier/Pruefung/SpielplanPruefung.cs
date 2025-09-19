@@ -16,18 +16,14 @@ namespace BP_Gruempeltournier
 
             if (teamCount < 2)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("+----------------------------------+");
-                Console.WriteLine("| MINDESTENS ZWEI TEAMS ERSTELLEN! |");
-                Console.WriteLine("+----------------------------------+");
-                Console.WriteLine("");
-                Console.ForegroundColor = ConsoleColor.Black;
-                return (flowControl: false, value: default);
+                ConsoleHelper.WriteLineColored("+----------------------------------+\n| MINDESTENS ZWEI TEAMS ERSTELLEN! |\n+----------------------------------+", ConsoleColor.Red);
             }
-
-            Spielplan.Generieren();
-            gameState = false;
-            return (flowControl: true, value: default);
+            else
+            {
+                Spielplan.Generieren();
+                gameState = false;
+                return (flowControl: true, value: default);
+            }
         }
     }
 }

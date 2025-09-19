@@ -9,18 +9,20 @@ namespace BP_Gruempeltournier.Data
         {
             using var con = Db.GetConnection();
             using var cmd = con.CreateCommand();
-            cmd.CommandText = @"
-INSERT INTO dbo.Spieler (Vorname, Nachname, Geburtstag, Wohnort)
-OUTPUT INSERTED.SpielerID
-VALUES (@Vorname, @Nachname, @Geburtstag, @Wohnort);";
+            cmd.CommandText = """
+                
+                INSERT INTO dbo.Spieler (Vorname, Nachname, Geburtstag, Wohnort)
+                OUTPUT INSERTED.SpielerID
+                VALUES (@Vorname, @Nachname, @Geburtstag, @Wohnort);
+                
+                """;
 
             cmd.Parameters.Add("@Vorname", SqlDbType.NVarChar, 50).Value = s.Vorname;
             cmd.Parameters.Add("@Nachname", SqlDbType.NVarChar, 50).Value = s.Nachname;
 
-            // DateOnly -> DateTime für SQL DATE
-            var dt = s.Geburtstag.ToDateTime(TimeOnly.MinValue);
+            //var dt = s.Geburtstag.ToDateTime(TimeOnly.MinValue);
             var pGeb = cmd.Parameters.Add("@Geburtstag", SqlDbType.Date);
-            pGeb.Value = dt;
+            pGeb.Value = s.Geburtstag;
 
             cmd.Parameters.Add("@Wohnort", SqlDbType.NVarChar, 100).Value = s.Wohnort;
 

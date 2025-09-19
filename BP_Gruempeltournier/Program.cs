@@ -8,9 +8,7 @@ namespace BP_Gruempeltournier
     {
         static void Main(string[] args)
         {
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Black;
+            ConsoleHelper.SetProgramColors();
 
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())

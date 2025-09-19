@@ -56,10 +56,8 @@ namespace BP_Gruempeltournier
             {
                 int newId = spielerRepo.Insert(s);
                 Console.WriteLine("------------------------------");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine($"Spieler erfasst!");
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("");
+                ConsoleHelper.WriteLineColored("Spieler erfasst!", ConsoleColor.DarkGreen);
+                Console.WriteLine();
             }
             catch (Exception ex)
             {

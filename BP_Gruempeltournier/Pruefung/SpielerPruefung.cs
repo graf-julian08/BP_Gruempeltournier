@@ -29,15 +29,11 @@ namespace BP_Gruempeltournier
                     if (geburtstag > heute.AddYears(-alter)) alter--;
 
                     if (alter is >= 8 and <= 16) break;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Nur 8–16 Jährige dürfen teilnehmen!");
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    ConsoleHelper.WriteLineColored("Nur 8–16 Jährige dürfen teilnehmen!", ConsoleColor.Red);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ungültiges Datum! Bitte im Format tt.mm.jjjj eingeben.");
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    ConsoleHelper.WriteLineColored("Ungültiges Datum! Bitte im Format tt.mm.jjjj eingeben.", ConsoleColor.Red);
                 }
             }
 
@@ -56,16 +52,12 @@ namespace BP_Gruempeltournier
             {
                 int newId = spielerRepo.Insert(s);
                 Console.WriteLine("------------------------------");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine($"Spieler erfasst!");
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("");
+                ConsoleHelper.WriteLineColored("Spieler erfasst!", ConsoleColor.DarkGreen);
+                Console.WriteLine();
             }
             catch (Exception ex)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Fehler beim Speichern: {ex.Message}");
-                Console.ForegroundColor = ConsoleColor.Black;
+                ConsoleHelper.WriteLineColored($"Fehler beim Speichern: {ex.Message}", ConsoleColor.Red);
             }
         }
     }

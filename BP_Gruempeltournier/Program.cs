@@ -1,36 +1,19 @@
 ﻿using Microsoft.Extensions.Configuration;
 using BP_Gruempeltournier.Data;
+using BP_Gruempeltournier;
 
-namespace BP_Gruempeltournier
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            bool gameState = true;
-            ConsoleColor defaultBackground = Console.BackgroundColor;
-            ConsoleColor defaultForeground = Console.ForegroundColor;
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Black;
+ConsoleHelper.SetProgramColors();
 
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(@"C:\Users\graf_\source\repos\M320_OoP\BP_Gruempeltournier\appsettings.json", optional: false, reloadOnChange: true)
-                .Build();
+var config = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile(@"C:\Users\graf_\source\repos\BP_Gruempeltournier\Gruempeltournier\Gruempeltournier\BP_Gruempeltournier\appsettings.json", optional: false, reloadOnChange: true)
+    .Build();
 
-            var connectionString = config.GetConnectionString("GruempeliDb");
-            Db.ConnectionString = connectionString;
+var connectionString = config.GetConnectionString("GruempeliDb");
+Db.ConnectionString = connectionString;
 
-            Menu.CreateMenu();
+bool gameState = true;
+var spielerRepo = new SpielerRepository();
+var teamRepo = new TeamRepository();
 
-            if (gameState == false)
-            {
-                Console.BackgroundColor = defaultBackground;
-                Console.ForegroundColor = defaultForeground;
-                Console.Clear();
-                Console.WriteLine("Flip hats geschafft");
-            }
-        }
-    }
-}
+Menu.CreateMenu(ref gameState, spielerRepo, teamRepo);

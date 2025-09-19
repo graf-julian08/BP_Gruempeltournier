@@ -1,8 +1,11 @@
 ﻿using BP_Gruempeltournier.Data;
 using BP_Gruempeltournier.Models;
+using System.Globalization;
 
 namespace BP_Gruempeltournier
 {
+
+    
     internal class Menu
     {
         internal static void CreateMenu()
@@ -10,6 +13,7 @@ namespace BP_Gruempeltournier
             bool gameState = true;
             var spielerRepo = new SpielerRepository();
             var teamRepo = new TeamRepository();
+            
 
             while (gameState)
             {
@@ -252,6 +256,7 @@ namespace BP_Gruempeltournier
                     Console.WriteLine("Spiel beendet!");
                     Console.ForegroundColor = ConsoleColor.Black;
                     gameState = false;
+                    
                 }
             }
         }

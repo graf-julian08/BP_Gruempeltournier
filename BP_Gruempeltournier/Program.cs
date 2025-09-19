@@ -7,6 +7,9 @@ namespace BP_Gruempeltournier
     {
         static void Main(string[] args)
         {
+            bool gameState = true;
+            ConsoleColor defaultBackground = Console.BackgroundColor;
+            ConsoleColor defaultForeground = Console.ForegroundColor;
             Console.BackgroundColor = ConsoleColor.White;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Black;
@@ -20,6 +23,14 @@ namespace BP_Gruempeltournier
             Db.ConnectionString = connectionString;
 
             Menu.CreateMenu();
+
+            if (gameState == false)
+            {
+                Console.BackgroundColor = defaultBackground;
+                Console.ForegroundColor = defaultForeground;
+                Console.Clear();
+                Console.WriteLine("Flip hats geschafft");
+            }
         }
     }
 }
